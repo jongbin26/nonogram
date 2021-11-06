@@ -6,15 +6,32 @@ for(i=0;i<localStorage.length;i++){
   const fronttag=document.createElement('div');
   const backtag=document.createElement('div');
   const previous=document.createElement('div');
+
+  //하단 버튼
+  const btns=document.createElement('div');
+  const start_btn=document.createElement('div');
+  const reset_btn=document.createElement('div');
+  const submit_btn=document.createElement('div');
+  start_btn.className="start";
+  reset_btn.className="reset";
+  submit_btn.className="submit";
+  btns.append(start_btn, reset_btn, submit_btn);
+
+  btns.className="btns";
   fronttag.className="front";
   backtag.className="back";
   previous.className="previous";
+
   fronttag.innerHTML=temp;
   backtag.innerHTML=table;
   previous.innerHTML="<";
-  backtag.append(previous);
-  litag.append(fronttag);
-  litag.append(backtag);
+  reset_btn.innerHTML="다시";
+  start_btn.innerHTML="시작";
+  submit_btn.innerHTML="제출";
+
+  backtag.append(previous, btns);
+  litag.append(fronttag, backtag);
+
   document.getElementsByClassName("gamelist")[0].append(litag);
 }
 
