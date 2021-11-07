@@ -85,14 +85,16 @@
   right: 0;
   left: 0;
   margin: auto;
-  width: 350px;
-  height: 350px;
-  border-collapse: collapse;
+  width: 25rem;
+  height: 25rem;
+  border-spacing: 0;
+  border: 1px solid black;
   cursor: pointer;
 }
 .start .start-box .back table td{
+  border: 1px solid black;
+  border-collapse: collapse;
   background-color: #fff;
-  border: 1px solid #000;
 }
 .start .start-box .back table td.black{
   background-color: #000;
