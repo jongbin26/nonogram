@@ -49,7 +49,6 @@ function create(){
     }
     var index=String(localStorage.length);
     temp=temp.substring(1);
-    console.log(temp);
     localStorage.setItem(index,temp);
     tds.forEach(function(td){
       td.classList.remove("black");

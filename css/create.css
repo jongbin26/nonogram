@@ -112,6 +112,5 @@
 }
 .return a:hover{
   transition: .3s;
-  background-color: #5a5a5a;
-  color: #dcdcdc;
+  color: #5a5a5a;
 }

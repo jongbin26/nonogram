@@ -13,7 +13,7 @@
   <!-- start page -->
   <div class="main"> 
     <div class="main-box">
-      <h1>놀기그램</h1>
+      <h1>노노그램</h1>
       <a href="./nonogram/html/start.html" class="start-btn">놀기</a>
       <a href="./nonogram/html/create.html" class="create-btn">만들기</a>
     </div>
