@@ -63,6 +63,9 @@ tds.forEach(function(td){
     if(td.classList.contains("black")){
       td.classList.remove('black');
     }else{
+      if(td.classList.contains("no")){
+        td.classList.remove('no');
+      }
       td.classList.add('black');
     }
   })
@@ -71,10 +74,11 @@ tds.forEach(function(td){
     event.preventDefault();          //delete contextbox 
     if(td.classList.contains("no")){
       td.classList.remove('no');
-      td.innerHTML="";
     }else{
+      if(td.classList.contains("black")){
+        td.classList.remove('black');
+      }
       td.classList.add('no');
-      td.innerHTML="X";
     }
   });
 });  
