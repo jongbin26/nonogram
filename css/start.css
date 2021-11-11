@@ -1,3 +1,7 @@
+body{
+  font-family: 'Zen Dots', cursive;
+  cursor: url(cursor-click.cur), auto;
+}
 .return a{
   left: 25px;
   top: 10px;
@@ -10,6 +14,7 @@
 .return a:hover{
   transition: .3s;
   color: #5a5a5a;
+  cursor: url(cursor.cur), auto;
 }
 .start .start-box{
   position: absolute;
@@ -17,7 +22,8 @@
   width: 920px;
   /* 앞에 padding 왜 붙는지 몰라서 920 픽스 */
   height: 700px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  /* border: 10px dashed #fff; */
   top: 0;
   bottom: 0;
   right: 0;
@@ -33,16 +39,17 @@
   height: 100px;
   text-align: center;
   line-height: 100px;
-  background-color: #969696;
-  color: #fff;
-  font-size: 25px;
+  background-color: #fff;
+  color: #969696;
+  font-size: 20px;
   margin: 10px;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
 }
 .start .start-box .front:hover{
   transition: .3s;
   background-color: #5a5a5a;
   color: #dcdcdc;
+  cursor: url(cursor.cur), auto;
 }
 .start .start-box .back{
   position: absolute;
@@ -67,10 +74,10 @@
   display: block;
   color: #5a5a5a;
   top: 10px;
-  left: 30px;
-  font-size: 50px;
+  right: 30px;
+  font-size: 40px;
   font-weight: 1000;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
 }
 .start .start-box .back .previous:hover{
   transition: .3s;
@@ -88,7 +95,7 @@
   height: 20rem;
   border-spacing: 0;
   border: 1px solid black;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
   table-layout:fixed;
 }
 .start .start-box .back table td{
@@ -119,13 +126,13 @@
   margin: auto;
   bottom: 65px;
   color: #fff;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
 }
 .btns .clock{
   width: 100px;
   height: 50px;
   margin: 15px;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   background-color: #5a5a5a;
@@ -134,7 +141,7 @@
   width: 100px;
   height: 50px;
   margin: 15px;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   background-color: #5a5a5a;
@@ -143,7 +150,7 @@
   width: 100px;
   height: 50px;
   margin: 15px;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   background-color: #5a5a5a;

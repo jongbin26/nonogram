@@ -1,3 +1,7 @@
+body{
+  font-family: 'Zen Dots', cursive;
+  cursor: url(cursor-click.cur), auto;
+}
 .create .create-box{
   background-color: #fff;
   width: 600px;
@@ -20,13 +24,13 @@
   margin: auto;
   top: 10px;
   color: #fff;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
 }
 .create .level .level1{
   width: 100px;
   height: 50px;
   margin: 15px;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   background-color: #5a5a5a;
@@ -35,7 +39,7 @@
   width: 100px;
   height: 50px;
   margin: 15px;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   background-color: #5a5a5a;
@@ -44,7 +48,7 @@
   width: 100px;
   height: 50px;
   margin: 15px;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   background-color: #5a5a5a;
@@ -66,7 +70,7 @@
   height: 25rem;
   border-spacing: 0;
   border: 1px solid black;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
 }
 .create .create-box .board table td{
   border: 1px solid black;
@@ -92,7 +96,7 @@
   background-color: #969696;
   text-align: center;
   line-height: 50px;
-  cursor: pointer;
+  cursor: url(cursor.cur), auto;
 }
 .create .create-box .plus:hover{
   transition: .3s;
@@ -113,4 +117,5 @@
 .return a:hover{
   transition: .3s;
   color: #5a5a5a;
+  cursor: url(cursor.cur), auto;
 }

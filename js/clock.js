@@ -1,16 +1,14 @@
 window.onload = function(){
-  var display = document.getElementsByClassName("clock");
-  console.log(display);
-  const tds=document.querySelectorAll('td');
-  tds.forEach(function(td){
+  const lis=document.querySelectorAll('li');
+  lis.forEach(function(li){
     var startTime, timer;
-    td.onclick = start;
+    li.onclick = start;
     function start(){ 
-      td.onclick = null;
+      li.onclick = null;
       startTime = new Date();
       timer = setInterval(function(){
-       var now = new Date();
-        display.innerHTML = ((now - startTime)/1000).toFixed(2); 
+        var now = new Date();
+        li.children[1].children[2].children[1].innerHTML = ((now - startTime)/1000).toFixed(2);
       }, 10); 
     }
   }); 

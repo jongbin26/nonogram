@@ -1,11 +1,34 @@
 body{
   position: relative;
+  cursor: url(cursor-click.cur), auto;
   width: 100vw;
   height: 100vh;
   background-color: #a5a5a5;
+  /* #969696 */
   margin: 0;
   padding: 0;
-
+  font-family: 'Zen Dots', cursive;
+  /* 임시 */
+  color:black;
+  background-image: linear-gradient(
+      45deg,
+      #969696 25%,
+      transparent 25%,
+      transparent 75%,
+      #969696 75%,
+      #969696
+    ),
+    linear-gradient(
+      -45deg,
+      #969696 25%,
+      transparent 25%,
+      transparent 75%,
+      #969696 75%,
+      #969696
+    );
+  background-size: 60px 60px;
+  background-position: 0 0;
+  animation: slide 4s infinite linear;
 }
 
 /* main */
@@ -21,7 +44,7 @@ body{
   margin: auto;
 }
 .main .main-box h1{
-  font-size: 80px;
+  font-size: 70px;
   text-align: center;
   line-height: 60px;
 }
@@ -30,13 +53,14 @@ body{
   position: absolute;
   background-color: #969696;
   font-weight: 550;
-  font-size: 35px;
+  font-size: 30px;
   width: 150px;
   height: 60px;
   color: #fff;
   text-decoration: none;
   text-align: center;
   line-height: 60px;
+  cursor: url(cursor.cur), auto;
 }
 .main .main-box .start-btn{
   left: 80px;
@@ -49,4 +73,15 @@ body{
   transition: .3s;
   background-color: #5a5a5a;
   color: #dcdcdc;
+}
+
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -120px 60px;
+  }
 }

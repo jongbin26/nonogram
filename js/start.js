@@ -29,10 +29,10 @@ for(i=0;i<localStorage.length;i++){
 
   fronttag.innerHTML=temp;
   backtag.innerHTML=table;
-  previous.innerHTML="<";
-  reset_btn.innerHTML="다시";
-  clock_btn.innerHTML="";
-  submit_btn.innerHTML="제출";
+  previous.innerHTML="x";
+  reset_btn.innerHTML="reset";
+  clock_btn.innerHTML="0.00";
+  submit_btn.innerHTML="submit";
 
   backtag.append(previous, btns);
   litag.append(fronttag, backtag);
@@ -56,7 +56,7 @@ previouses.forEach(function(previous){
 
 //start html에서 td에 black class 추가
 // create html에서 td 버튼
-const tds=document.querySelectorAll('td');
+var tds=document.querySelectorAll('td');
 tds.forEach(function(td){
   td.addEventListener('click',function(){
     if(td.classList.contains("black")){
@@ -81,3 +81,36 @@ tds.forEach(function(td){
     }
   });
 });
+
+//다시 버튼
+resets=document.querySelectorAll(".reset");
+resets.forEach(function(reset){
+  reset.addEventListener('click',function(){
+    const tds=document.querySelectorAll('td');
+    tds.forEach(function(td){
+      td.classList.remove("black");
+      td.classList.remove("no");
+    })
+  })
+})
+
+//제출 버튼
+const submits=document.querySelectorAll(".submit");
+submits.forEach(function(submit){
+  submit.addEventListener('click',function(){
+    var temp=0;
+    grandParentNode=submit.parentNode.parentNode;
+    tds=grandParentNode.querySelectorAll("td");
+    tds.forEach(function(td){
+      if(td.classList.contains("black")){
+        temp+="1";
+      }
+      else{
+        temp+="0";
+      }
+    });
+    temp=temp.substring(1);
+
+    console.log(grandParentNode.parentNode.parentElement);
+  });
+})
