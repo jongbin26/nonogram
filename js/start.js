@@ -31,7 +31,7 @@ for(i=0;i<localStorage.length;i++){
   backtag.innerHTML=table;
   previous.innerHTML="x";
   reset_btn.innerHTML="reset";
-  clock_btn.innerHTML="0.00";
+  clock_btn.innerHTML="start";
   submit_btn.innerHTML="submit";
 
   backtag.append(previous, btns);
