@@ -1,16 +1,43 @@
 // start html
 for(i=0;i<localStorage.length;i++){
   temp="game"+(i+1);
-  if(localStorage.getItem(i).length==100)
+  if(localStorage.getItem(i).length==100){
     table="<table class=\"table\"><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr></table>";
-  else if(localStorage.getItem(i).length==64)
+    var obj = {
+      local : i,
+      num : 10
+    };
+    firstTable = makeNumber(obj)[0];
+    secondTable = makeNumber(obj)[1];
+  }
+  else if(localStorage.getItem(i).length==64){
     table="<table class=\"table\">  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr></table>";
-  else if(localStorage.getItem(i).length==25)
+    var obj = {
+      local : i,
+      num : 8
+    };
+    firstTable = makeNumber(obj)[0];
+    secondTable = makeNumber(obj)[1];
+  }
+  else if(localStorage.getItem(i).length==25){
     table="<table class=\"table\">  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr></table>";
-  const litag=document.createElement('li');
+    var obj = {
+      local : i,
+      num : 5
+    };
+    firstTable = makeNumber(obj)[0];
+    secondTable = makeNumber(obj)[1];
+  }
+    const litag=document.createElement('li');
   const fronttag=document.createElement('div');
   const backtag=document.createElement('div');
   const previous=document.createElement('div');
+  const upTable=document.createElement('table');
+  const leftTable=document.createElement('table');
+  upTable.className="upTable";
+  leftTable.className="leftTable";
+  upTable.innerHTML=firstTable;
+  leftTable.innerHTML=secondTable;
 
   //하단 버튼
   const btns=document.createElement('div');
@@ -34,7 +61,7 @@ for(i=0;i<localStorage.length;i++){
   clock_btn.innerHTML="start";
   submit_btn.innerHTML="submit";
 
-  backtag.append(previous, btns);
+  backtag.append(previous, btns, upTable, leftTable);
   litag.append(fronttag, backtag);
 
   document.getElementsByClassName("gamelist")[0].append(litag);
@@ -94,23 +121,100 @@ resets.forEach(function(reset){
   })
 })
 
-//제출 버튼
-const submits=document.querySelectorAll(".submit");
-submits.forEach(function(submit){
-  submit.addEventListener('click',function(){
-    var temp=0;
-    grandParentNode=submit.parentNode.parentNode;
-    tds=grandParentNode.querySelectorAll("td");
-    tds.forEach(function(td){
-      if(td.classList.contains("black")){
-        temp+="1";
-      }
-      else{
-        temp+="0";
-      }
-    });
-    temp=temp.substring(1);
-
-    console.log(grandParentNode.parentNode.parentElement);
-  });
+clocks=document.querySelectorAll(".clock");
+clocks.forEach(function(clock){
+  clock.addEventListener('click',function(){
+    var temp1=clock.parentNode.nextSibling;
+    var temp2=clock.parentNode.nextSibling.nextSibling;
+    temp1.classList.add("show");
+    temp2.classList.add("show");
+  })
 })
+
+
+//숫자 대입
+function makeNumber(obj){
+  let firstTable = "<tbody>";
+  let firstarray = [];
+  for(n=0; n<obj.num; n++){
+    firstarray.push(n);
+  }
+  let checkLastRow = [];
+  for(n=0; n<obj.num; n++){
+    checkLastRow.push(n+obj.num*(obj.num-1));
+  }
+
+  for(l=0; l<Math.ceil(obj.num/2); l++){
+    firstTable += "<tr>";
+    let checkLastRowZeroNum = 0;
+    for(j=0; j<obj.num; j++){
+      let num = "";
+      let temp = 0;
+      while(localStorage.getItem(obj.local)[firstarray[j]]=="0"){
+        if(firstarray[j] == checkLastRow[j]){
+          checkLastRowZeroNum +=1;
+          break;
+        }
+        firstarray[j] += obj.num;
+        
+      }
+      while(localStorage.getItem(obj.local)[firstarray[j]]=="1"){
+        temp += 1;
+        firstarray[j] += obj.num;
+      }
+      num=temp;
+      if(temp==0) {
+        num="";
+      }
+      firstTable += `<td>${num}</td>`;
+    }
+    firstTable += "</tr>";
+    if(checkLastRowZeroNum == obj.num) {
+      firstTable = firstTable.slice(0,-(4*(obj.num+1)+5*(obj.num+1)));
+      break;
+    }
+  }
+  firstTable += "</tbody>";
+
+  // secondTable
+  let secondTable = "<tbody>";
+  let secondarray = [];
+  for(n=0; n<obj.num; n++){
+    secondarray.push(n*obj.num);
+  }
+
+  for(l=0; l<obj.num; l++){
+    let checkLastCol = secondarray[l];
+    secondTable += "<tr>";
+    for(j=0; j<Math.ceil(obj.num/2); j++){
+      let num = "";
+      let temp = 0;
+      while(localStorage.getItem(obj.local)[secondarray[l]]=="0"){
+        secondarray[l] += 1;
+        if(secondarray[l]>=checkLastCol+obj.num) break;
+      }
+      var a = 0;
+      while(localStorage.getItem(obj.local)[secondarray[l]]=="1"){
+        temp += 1;
+        secondarray[l] += 1;
+        if(secondarray[l]>=checkLastCol+obj.num) {
+          if(a==0) break;
+          secondTable += `<td>${temp}</td>`;
+          break;
+        }
+        a++;
+      }
+      if(j==0 && temp==0) secondTable += '<td></td>';
+      if(secondarray[l]>=checkLastCol+obj.num) break;
+      num=temp;
+      if(temp==0) {
+        break;
+      }
+      secondTable += `<td>${num}</td>`;
+    }
+    secondTable += "</tr>";
+  }
+  secondTable += "</tbody>";
+  let tableArray = [firstTable, secondTable];
+  return tableArray;
+}

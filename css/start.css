@@ -84,7 +84,7 @@ body{
   color: #969696;
 }
 
-.start .start-box .back table{
+.start .start-box .back .table{
   position: absolute;
   top: 0;
   bottom: 0;
@@ -98,19 +98,19 @@ body{
   cursor: url(cursor.cur), auto;
   table-layout:fixed;
 }
-.start .start-box .back table td{
+.start .start-box .back .table td{
   border: 1px solid black;
   border-collapse: collapse;
   background-color: #fff;      
   /* 이유모르겠음! */
 }
-.start .start-box .back table td.black{
+.start .start-box .back .table td.black{
   background-color: #000;
 }
-.start .start-box .back table td:hover{
+.start .start-box .back .table td:hover{
   background: #000;
 }
-.start .start-box .back table td.no{
+.start .start-box .back .table td.no{
   background: #969696;
 }
 
@@ -158,4 +158,40 @@ body{
 .btns .reset:hover, .btns .clock:hover, .btns .submit:hover{
   transition: .3s;
   background-color: #969696;
+}
+
+
+/* 수빈코드 */
+.start .start-box .back .upTable {
+  display: none;
+}
+.start .start-box .back .upTable.show{
+  display: table;
+  position: absolute;
+  border-spacing: 0;
+  bottom: 520px;
+  left: 300px;
+  width:20rem;
+  text-align:center;
+  table-layout:fixed;
+}
+.start .start-box .back .leftTable {
+  display: none;
+}
+.start .start-box .back .leftTable.show{
+  display: table;
+  position: absolute;
+  border-spacing: 0;
+  top: 190px;
+  right: 630px;
+  height: 20rem;
+  text-align:center;
+  table-layout:fixed;
+}
+.start .start-box .back .upTable td,
+.start .start-box .back .leftTable td{
+  border: 0px solid black;
+  border-collapse: collapse;
+  height:1rem;
+  width:1rem;
 }
