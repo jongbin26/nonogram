@@ -28,7 +28,7 @@ for(i=0;i<localStorage.length;i++){
     firstTable = makeNumber(obj)[0];
     secondTable = makeNumber(obj)[1];
   }
-    const litag=document.createElement('li');
+  const litag=document.createElement('li');
   const fronttag=document.createElement('div');
   const backtag=document.createElement('div');
   const previous=document.createElement('div');
@@ -85,6 +85,8 @@ previouses.forEach(function(previous){
 // create html에서 td 버튼
 var tds=document.querySelectorAll('td');
 tds.forEach(function(td){
+
+  //누르고 나서 event;
   td.addEventListener('click',function(){
     if(td.classList.contains("black")){
       td.classList.remove('black');
@@ -134,87 +136,135 @@ clocks.forEach(function(clock){
 
 //숫자 대입
 function makeNumber(obj){
+  // firsttable
   let firstTable = "<tbody>";
+  let firstTableArray = [];
   let firstarray = [];
   for(n=0; n<obj.num; n++){
     firstarray.push(n);
   }
-  let checkLastRow = [];
-  for(n=0; n<obj.num; n++){
-    checkLastRow.push(n+obj.num*(obj.num-1));
-  }
-
+  // 배열에 숫자 추가
   for(l=0; l<Math.ceil(obj.num/2); l++){
-    firstTable += "<tr>";
-    let checkLastRowZeroNum = 0;
     for(j=0; j<obj.num; j++){
       let num = "";
       let temp = 0;
+
       while(localStorage.getItem(obj.local)[firstarray[j]]=="0"){
-        if(firstarray[j] == checkLastRow[j]){
-          checkLastRowZeroNum +=1;
-          break;
-        }
         firstarray[j] += obj.num;
-        
       }
+
       while(localStorage.getItem(obj.local)[firstarray[j]]=="1"){
         temp += 1;
         firstarray[j] += obj.num;
       }
       num=temp;
-      if(temp==0) {
-        num="";
-      }
-      firstTable += `<td>${num}</td>`;
-    }
-    firstTable += "</tr>";
-    if(checkLastRowZeroNum == obj.num) {
-      firstTable = firstTable.slice(0,-(4*(obj.num+1)+5*(obj.num+1)));
-      break;
+      if(temp==0) num="";
+      firstTableArray.push(num);
     }
   }
-  firstTable += "</tbody>";
+  let row = Math.ceil(obj.num/2);
+  // 아래정렬
+  for(l=0; l<obj.num; l++){
+    let firstIndex = 0;
+    let first = false;
+    let lastRowIndex = l+obj.num*(row-1); 
+    if(firstTableArray[l] != ""){
+      for(j=l; j<=lastRowIndex; j+=obj.num){
+        if(firstTableArray[j] == ""){
+          firstIndex = j-obj.num;
+          first = true;
+          break;
+        }
+      }
+      if(first == true){
+        for(j=firstIndex; j>=0; j-=obj.num){
+          firstTableArray[lastRowIndex] = firstTableArray[j];
+          firstTableArray[j] = "";
+          lastRowIndex-=obj.num;
+        }
+      }
+        
+    }
+  }
+  // 테이블 생성
+  for(l=0; l<row; l++){
+    firstTable += '<tr>';
+    for(j=0; j<obj.num; j++){
+      firstTable += `<td>${firstTableArray[l*obj.num+j]}</td>`;
+    }
+    firstTable += '</tr>';
+  }
+  firstTable += '</tbody>';
 
   // secondTable
   let secondTable = "<tbody>";
+  let secondTableArray = [];
   let secondarray = [];
   for(n=0; n<obj.num; n++){
     secondarray.push(n*obj.num);
   }
 
   for(l=0; l<obj.num; l++){
-    let checkLastCol = secondarray[l];
-    secondTable += "<tr>";
+    let checkLastCol = secondarray[l]+obj.num;
+
     for(j=0; j<Math.ceil(obj.num/2); j++){
-      let num = "";
       let temp = 0;
+      let num = "";
       while(localStorage.getItem(obj.local)[secondarray[l]]=="0"){
         secondarray[l] += 1;
-        if(secondarray[l]>=checkLastCol+obj.num) break;
-      }
-      var a = 0;
-      while(localStorage.getItem(obj.local)[secondarray[l]]=="1"){
-        temp += 1;
-        secondarray[l] += 1;
-        if(secondarray[l]>=checkLastCol+obj.num) {
-          if(a==0) break;
-          secondTable += `<td>${temp}</td>`;
+        if(secondarray[l]>=checkLastCol) {
           break;
         }
-        a++;
       }
-      if(j==0 && temp==0) secondTable += '<td></td>';
-      if(secondarray[l]>=checkLastCol+obj.num) break;
+
+      while(localStorage.getItem(obj.local)[secondarray[l]]=="1"){
+        if(secondarray[l]>=checkLastCol) {
+          break;
+        }
+        temp += 1;
+        secondarray[l] += 1;
+        if(secondarray[l]>=checkLastCol) {
+          break;
+        }
+      }
       num=temp;
-      if(temp==0) {
-        break;
-      }
-      secondTable += `<td>${num}</td>`;
+      if(temp==0) num="";
+      secondTableArray.push(num);
     }
-    secondTable += "</tr>";
   }
-  secondTable += "</tbody>";
+  let col = Math.ceil(obj.num/2);
+  // 오른쪽 정렬
+  for(l=0; l<=obj.num*col; l+=col){
+    let secondIndex = 0;
+    let lastColIndex = l+col-1; 
+    let second = false;
+    if(secondTableArray[l] != ""){
+      for(j=l; j<=lastColIndex; j++){
+        if(secondTableArray[j] == ""){
+          secondIndex = j-1;
+          second = true;
+          break;
+        }
+      }
+      if(second == true){
+        for(j=secondIndex; j>=l; j--){
+          secondTableArray[lastColIndex] = secondTableArray[j];
+          secondTableArray[j] = "";
+          lastColIndex--;
+        }
+      }
+    }
+  }
+  // 테이블 생성
+  for(l=0; l<obj.num; l++){
+    secondTable += '<tr>';
+    for(j=0; j<col; j++){
+      secondTable += `<td>${secondTableArray[l*col+j]}</td>`;
+    }
+    secondTable += '</tr>';
+  }
+  secondTable += '</tbody>';
+
   let tableArray = [firstTable, secondTable];
   return tableArray;
 }
