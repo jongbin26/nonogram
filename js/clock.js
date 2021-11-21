@@ -33,16 +33,17 @@ window.onload = function(){
             var board=8;
           }else if(temp.length==25){
             var board=5;
-          }
-          console.log(checkAnswer(board,temp)[0]);
-          console.log(grandParentNode.childNodes[4].innerHTML);
-          console.log(checkAnswer(board,temp)[1]);
-          console.log(grandParentNode.childNodes[3].innerHTML);
+          } 
+          var doubleSubmitFlag = false;
           if((checkAnswer(board,temp)[0]==grandParentNode.childNodes[3].innerHTML)&&(checkAnswer(board,temp)[1]==grandParentNode.childNodes[4].innerHTML)){
-            alert("정답입니다!");
-            clearInterval(timer);
+            if(doubleSubmitCheck()){
+              alert("정답입니다!");
+              clearInterval(timer);
+            }
           }else{
-            alert("오답입니다ㅠㅠ");
+            if(doubleSubmitCheck()){
+              alert("오답입니다ㅠㅠ");
+            }
           }
         });
       })
@@ -185,4 +186,15 @@ function checkAnswer(board, submit){
 
   let tableArray = [firstTable, secondTable];
   return tableArray;
+}
+
+//alert duplicate
+var doubleSubmitFlag = false;
+function doubleSubmitCheck(){
+  if(doubleSubmitFlag){
+    return doubleSubmitFlag;
+  }else{
+    doubleSubmitFlag = true;
+    return false;
+  }
 }
