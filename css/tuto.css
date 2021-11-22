@@ -1,0 +1,240 @@
+body{
+  font-family: 'Zen Dots', cursive;
+  cursor: url(cursor-click.cur), auto;
+}
+.return a{
+  left: 25px;
+  top: 10px;
+  position: absolute;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 900;
+  text-decoration-line: none;
+}
+.return a:hover{
+  transition: .3s;
+  color: #5a5a5a;
+  cursor: url(cursor.cur), auto;
+}
+.start .start-box{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: absolute;
+  padding: unset;
+  width: 900px;
+  /* 앞에 padding 왜 붙는지 몰라서 920 픽스 */
+  height: 330px;
+  /* background-color: #fff; */
+  /* border: 10px dashed #fff; */
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.start .start-box .gamelist{
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 840px;
+  height: 240px;
+  background-color: #fff;
+  margin: 0;
+}
+.start .start-box li{
+  display:inline-block;
+}
+.start .start-box .front{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  background-color: #969696;
+  color: #fff;
+  font-size: 20px;
+  margin: 10px;
+  cursor: url(cursor.cur), auto;
+}
+.start .start-box .front:hover{
+  transition: .3s;
+  background-color: #5a5a5a;
+  color: #dcdcdc;
+  cursor: url(cursor.cur), auto;
+}
+.start .start-box .back{
+  position: absolute;
+  display: block;
+  width: 920px;
+  height: 700px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: rotateX(-180deg);
+  backface-visibility: hidden;
+}
+.start .start-box .back.on{
+  /* transition: .3s; */
+  background-color: #fff;
+  transform: perspective(1000px) rotateX(0deg);
+}
+.start .start-box .back .previous{
+  position: absolute;
+  display: block;
+  color: #5a5a5a;
+  top: 10px;
+  right: 30px;
+  font-size: 40px;
+  font-weight: 1000;
+  cursor: url(cursor.cur), auto;
+}
+.start .start-box .back .previous:hover{
+  transition: .3s;
+  color: #969696;
+}
+
+.start .start-box .back .table{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 20rem;
+  height: 20rem;
+  border-spacing: 0;
+  border: 1px solid black;
+  cursor: url(cursor.cur), auto;
+  table-layout:fixed;
+}
+.start .start-box .back .table td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: #fff;      
+  /* 이유모르겠음! */
+}
+.start .start-box .back .table td.black{
+  background-color: #000;
+}
+.start .start-box .back .table td:hover{
+  background:#000;
+}
+.start .start-box .back .table td.no{
+  background: #969696;
+}
+
+/* 하단버튼 */
+.btns{
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 390px;
+  height: 70px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 65px;
+  color: #fff;
+  cursor: url(cursor.cur), auto;
+}
+.btns .clock{
+  width: 100px;
+  height: 50px;
+  margin: 15px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #5a5a5a;
+}
+.btns .reset{
+  width: 100px;
+  height: 50px;
+  margin: 15px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #5a5a5a;
+}
+.btns .submit{
+  width: 100px;
+  height: 50px;
+  margin: 15px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #5a5a5a;
+}
+.btns .reset:hover, .btns .clock:hover, .btns .submit:hover{
+  transition: .3s;
+  background-color: #969696;
+}
+
+
+/* 수빈코드 */
+.start .start-box .back .upTable {
+  display: none;
+}
+.start .start-box .back .upTable.show{
+  display: table;
+  position: absolute;
+  border-spacing: 0;
+  bottom: 520px;
+  left: 300px;
+  width:20rem;
+  text-align:center;
+  table-layout:fixed;
+}
+.start .start-box .back .leftTable {
+  display: none;
+}
+.start .start-box .back .leftTable.show{
+  display: table;
+  position: absolute;
+  border-spacing: 0;
+  top: 190px;
+  right: 630px;
+  height: 20rem;
+  text-align:center;
+  table-layout:fixed;
+}
+.start .start-box .back .upTable td,
+.start .start-box .back .leftTable td{
+  border: 0px solid black;
+  border-collapse: collapse;
+  height:1rem;
+  width:1rem;
+}
+
+.level{
+  display: flex;
+  justify-content: center;
+}
+.level .level1,
+.level .level2,
+.level .level3{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 300px;
+  height: 50px;
+  background-color: #5a5a5a;
+  color: #969696;
+  text-align: center;
+  line-height: 50px;
+  font-size: 23px;
+  margin: 0;
+}
+.level .level1:hover,
+.level .level2:hover,
+.level .level3:hover{
+  background-color: #969696;
+  color: #fff;
+}
+.level .level1.focus,
+.level .level2.focus,
+.level .level3.focus{
+  background-color: #969696;
+  color: #fff;
+}

@@ -65,6 +65,7 @@ for(i=0;i<localStorage.length;i++){
   litag.append(fronttag, backtag);
 
   document.getElementsByClassName("gamelist")[0].append(litag);
+  
 }
 
 const fronts=document.querySelectorAll('.front');

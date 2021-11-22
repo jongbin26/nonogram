@@ -17,7 +17,7 @@
   <div class="main"> 
     <div class="main-box">
       <h1>nonogram</h1>
-      <a href="./nonogram/html/start.html" class="start-btn">play</a>
+      <a href="./nonogram/html/start.html" class="start-btn">tutorial</a>
       <a href="./nonogram/html/create.html" class="create-btn">create</a>
     </div>
   </div>

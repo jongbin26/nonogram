@@ -34,7 +34,7 @@ body{
 /* main */
 .main .main-box{
   position: absolute;
-  width: 550px;
+  width: 610px;
   height: 300px;
   background-color: #fff;
   top: 0;
@@ -49,7 +49,8 @@ body{
   line-height: 60px;
 }
 .main .main-box .start-btn,
-.main .main-box .create-btn{
+.main .main-box .create-btn,
+.main .main-box .tuto-btn{
   position: absolute;
   background-color: #969696;
   font-weight: 550;
@@ -63,13 +64,17 @@ body{
   cursor: url(cursor.cur), auto;
 }
 .main .main-box .start-btn{
-  left: 80px;
+  left: 230px;
 }
 .main .main-box .create-btn{
-  right: 80px;
+  left: 410px;
+}
+.main .main-box .tuto-btn{
+  left: 50px;
 }
 .main .main-box .start-btn:hover,
-.main .main-box .create-btn:hover{
+.main .main-box .create-btn:hover,
+.main .main-box .tuto-btn:hover{
   transition: .3s;
   background-color: #5a5a5a;
   color: #dcdcdc;

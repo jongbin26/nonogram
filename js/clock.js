@@ -36,14 +36,10 @@ window.onload = function(){
           } 
           var doubleSubmitFlag = false;
           if((checkAnswer(board,temp)[0]==grandParentNode.childNodes[3].innerHTML)&&(checkAnswer(board,temp)[1]==grandParentNode.childNodes[4].innerHTML)){
-            if(doubleSubmitCheck()){
-              alert("정답입니다!");
-              clearInterval(timer);
-            }
+            alert("정답입니다!");
+            clearInterval(timer);
           }else{
-            if(doubleSubmitCheck()){
-              alert("오답입니다ㅠㅠ");
-            }
+            alert("오답입니다ㅠㅠ");
           }
         });
       })
