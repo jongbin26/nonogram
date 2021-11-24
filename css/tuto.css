@@ -97,6 +97,7 @@ body{
 }
 
 .start .start-box .back .table{
+  display:table;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -109,10 +110,14 @@ body{
   border: 1px solid black;
   cursor: url(cursor.cur), auto;
   table-layout:fixed;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align:center;
+  color: red;
 }
 .start .start-box .back .table td{
   border: 1px solid black;
   border-collapse: collapse;
+  word-break:break-all;
   background-color: #fff;      
   /* 이유모르겠음! */
 }
@@ -122,8 +127,17 @@ body{
 .start .start-box .back .table td:hover{
   background:#000;
 }
-.start .start-box .back .table td.no{
-  background: #969696;
+.start .start-box .back .table.tutolevel1 td.no{
+  border-collapse: collapse;
+  height:20%;
+}
+.start .start-box .back .table.tutolevel2 td.no{
+  border-collapse: collapse;
+  height:12.5%;
+}
+.start .start-box .back .table.tutolevel3 td.no{
+  border-collapse: collapse;
+  height:10%;
 }
 
 /* 하단버튼 */

@@ -2,7 +2,7 @@
 for(i=0;i<localStorage.length;i++){
   temp="game"+(i+1);
   if(localStorage.getItem(i).length==100){
-    table="<table class=\"table\"><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr></table>";
+    table="<table class=\"table createlevel3\"><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr></table>";
     var obj = {
       local : i,
       num : 10
@@ -11,7 +11,7 @@ for(i=0;i<localStorage.length;i++){
     secondTable = makeNumber(obj)[1];
   }
   else if(localStorage.getItem(i).length==64){
-    table="<table class=\"table\">  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr></table>";
+    table="<table class=\"table createlevel2\">  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  </tr></table>";
     var obj = {
       local : i,
       num : 8
@@ -20,7 +20,7 @@ for(i=0;i<localStorage.length;i++){
     secondTable = makeNumber(obj)[1];
   }
   else if(localStorage.getItem(i).length==25){
-    table="<table class=\"table\">  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr></table>";
+    table="<table class=\"table createlevel1\">  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr>  <tr>    <td></td><td></td><td></td><td></td><td></td>  </tr></table>";
     var obj = {
       local : i,
       num : 5
@@ -38,6 +38,8 @@ for(i=0;i<localStorage.length;i++){
   leftTable.className="leftTable";
   upTable.innerHTML=firstTable;
   leftTable.innerHTML=secondTable;
+  litag.className="list";
+  litag.id = `createli${i}`;
 
   //하단 버튼
   const btns=document.createElement('div');
@@ -65,7 +67,6 @@ for(i=0;i<localStorage.length;i++){
   litag.append(fronttag, backtag);
 
   document.getElementsByClassName("gamelist")[0].append(litag);
-  
 }
 
 const fronts=document.querySelectorAll('.front');
@@ -84,7 +85,7 @@ previouses.forEach(function(previous){
 
 //start html에서 td에 black class 추가
 // create html에서 td 버튼
-var tds=document.querySelectorAll('td');
+var tds=document.querySelectorAll('.table td');
 tds.forEach(function(td){
 
   //누르고 나서 event;
@@ -94,6 +95,7 @@ tds.forEach(function(td){
     }else{
       if(td.classList.contains("no")){
         td.classList.remove('no');
+        td.innerHTML = "";
       }
       td.classList.add('black');
     }
@@ -103,11 +105,13 @@ tds.forEach(function(td){
     event.preventDefault();          //delete contextbox 
     if(td.classList.contains("no")){
       td.classList.remove('no');
+      td.innerHTML = "";
     }else{
       if(td.classList.contains("black")){
         td.classList.remove('black');
       }
       td.classList.add('no');
+      td.innerHTML = "X";
     }
   });
 });
@@ -116,10 +120,11 @@ tds.forEach(function(td){
 resets=document.querySelectorAll(".reset");
 resets.forEach(function(reset){
   reset.addEventListener('click',function(){
-    const tds=document.querySelectorAll('td');
+    const tds=document.querySelectorAll('.table td');
     tds.forEach(function(td){
       td.classList.remove("black");
       td.classList.remove("no");
+      td.innerHTML = "";
     })
   })
 })

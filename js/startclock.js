@@ -1,88 +1,80 @@
-window.onload = function () {
+window.onload = function(){
   var liID, li;
-  clickFront();
-  const levels = document.querySelectorAll('.level');
-  levels.forEach(function (level) {
-    level.addEventListener('click', clickFront);
-  })
+  const fronts=document.querySelectorAll('.front');
+  fronts.forEach(function(front){
+    front.addEventListener('click', function(){
+      liID = front.parentNode.id;
+      li = document.querySelector(`#${liID}`);
+      clock = li.querySelector(".clock");
+      end = li.querySelector(".previous");
+      uptable = li.querySelector(".upTable");
+      lefttable = li.querySelector(".leftTable");
+      tds = li.querySelectorAll('.table td');
+      submit = li.querySelector(".submit");
 
-  function clickFront () {
-    const fronts = document.querySelectorAll('.front');
-      fronts.forEach(function (front) {
-        front.addEventListener('click', function () {
-          liID = front.parentNode.id;
-          li = document.querySelector(`#${liID}`);
-          clock = li.querySelector(".clock");
-          end = li.querySelector(".previous");
-          uptable = li.querySelector(".upTable");
-          lefttable = li.querySelector(".leftTable");
-          tds = li.querySelectorAll('.table td');
-          submit = li.querySelector(".submit");
+      submit.addEventListener('click', clickSubmit);
 
-          submit.addEventListener('click', clickSubmit);
+      var startTime, timer;
+      clock.onclick = start;
 
-          var startTime, timer;
-          clock.onclick = start;
-
-          function start() {
-            clock.onclick = null;
-            startTime = new Date();
-            timer = setInterval(function () {
-              var now = new Date();
-              clock.innerHTML = ((now - startTime) / 1000).toFixed(2);
-            }, 10);
-
-            end.onclick = function () {
-              clearInterval(timer);
-              timer = 0;
-              clock.innerHTML = "start";
-              uptable.classList.remove("show");
-              lefttable.classList.remove("show");
-              //reset
-              tds.forEach(function (td) {
-                td.classList.remove("black");
-                td.classList.remove("no");
-                td.innerHTML = "";
-              })
-              submit.removeEventListener('click', clickSubmit);
-            };
+      function start() {
+        clock.onclick = null;
+        startTime = new Date();
+        timer = setInterval(function () {
+          var now = new Date();
+          clock.innerHTML = ((now - startTime) / 1000).toFixed(2);
+        }, 10);
+        
+        end.onclick = function(){
+          clearInterval(timer);
+          timer = 0;
+          clock.innerHTML = "start";
+          uptable.classList.remove("show");
+          lefttable.classList.remove("show");
+          //reset
+          tds.forEach(function (td) {
+            td.classList.remove("black");
+            td.classList.remove("no");
+            td.innerHTML = "";
+          })
+          submit.removeEventListener('click',clickSubmit);
+        };  
+      }
+      //제출 버튼
+      
+      function clickSubmit() {
+        var temp = 0;
+        grandParentNode = submit.parentNode.parentNode;
+        tds = grandParentNode.querySelectorAll(".table td");
+        tds.forEach(function (td) {
+          if (td.classList.contains("black")) {
+            temp += "1";
           }
-          //제출 버튼
-
-          function clickSubmit() {
-            var temp = 0;
-            grandParentNode = submit.parentNode.parentNode;
-            tds = grandParentNode.querySelectorAll(".table td");
-            tds.forEach(function (td) {
-              if (td.classList.contains("black")) {
-                temp += "1";
-              }
-              else {
-                temp += "0";
-              }
-            });
-            temp = temp.substring(1);
-            if (temp.length == 100) {
-              var board = 10;
-            } else if (temp.length == 64) {
-              var board = 8;
-            } else if (temp.length == 25) {
-              var board = 5;
-            }
-
-            if ((checkAnswer(board, temp)[0] == grandParentNode.childNodes[3].innerHTML) && (checkAnswer(board, temp)[1] == grandParentNode.childNodes[4].innerHTML)) {
-              alert("정답입니다!");
-              clearInterval(timer);
-
-            } else {
-              alert("오답입니다ㅠㅠ");
-            }
+          else {
+            temp += "0";
           }
         });
-      })
-  }
+        temp = temp.substring(1);
+        if (temp.length == 100) {
+          var board = 10;
+        } else if (temp.length == 64) {
+          var board = 8;
+        } else if (temp.length == 25) {
+          var board = 5;
+        }
 
+        if ((checkAnswer(board, temp)[0] == grandParentNode.childNodes[3].innerHTML) && (checkAnswer(board, temp)[1] == grandParentNode.childNodes[4].innerHTML)) {
+          alert("정답입니다!");
+          clearInterval(timer);
 
+        } else {
+          alert("오답입니다ㅠㅠ");
+        }
+      }
+    });
+  })
+  
+    
 }
 
 
