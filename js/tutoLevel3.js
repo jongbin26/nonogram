@@ -19,10 +19,10 @@ function flevel3(){
     for(i=0;i<level3.length;i++){
         temp=level3[i].name;
     
-        table="<table class=\"table\"><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr></table>";
+        table="<table class=\"table tutolevel3\"><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr><tr>  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr></table>";
         size=10;
-        firstTable = makeNumber(size,level1[i].board)[0];
-        secondTable = makeNumber(size,level1[i].board)[1];
+        firstTable = makeNumber(size,level3[i].board)[0];
+        secondTable = makeNumber(size,level3[i].board)[1];
     
         const litag=document.createElement('li');
         const fronttag=document.createElement('div');
@@ -36,6 +36,11 @@ function flevel3(){
         leftTable.innerHTML=secondTable;
         litag.className="list";
         litag.id= `tuto3li${i}`;
+
+        //힌트 버튼
+        const hint=document.createElement('div');
+        hint.className="hint";
+        hint.innerHTML = "hint : 3";
     
         //하단 버튼
         const btns=document.createElement('div');
@@ -46,7 +51,7 @@ function flevel3(){
         reset_btn.className="reset";
         submit_btn.className="submit";
         btns.append(reset_btn, clock_btn, submit_btn);
-    
+
         btns.className="btns";
         fronttag.className="front";
         backtag.className="back";
@@ -59,7 +64,7 @@ function flevel3(){
         clock_btn.innerHTML="start";
         submit_btn.innerHTML="submit";
     
-        backtag.append(previous, btns, upTable, leftTable);
+        backtag.append(previous, btns, upTable, leftTable, hint);
         litag.append(fronttag, backtag);
     
         document.getElementsByClassName("gamelist")[0].append(litag);
@@ -69,6 +74,8 @@ function flevel3(){
     fronts.forEach(function (front) {
         front.addEventListener('click', function () {
             front.nextSibling.classList.add('on');
+            hint = front.nextSibling.lastChild;
+            hint.innerHTML = `hint : 3`;
         })
     });
 
@@ -76,6 +83,12 @@ function flevel3(){
     previouses.forEach(function (previous) {
         previous.addEventListener('click', function () {
             previous.parentElement.classList.remove('on');
+            tds.forEach(function (td) {
+              td.classList.remove("black");
+              td.classList.remove("no");
+              td.innerHTML = "";
+            })
+            hintcheck = false;
         })
     });
 
@@ -134,7 +147,57 @@ function flevel3(){
             temp2.classList.add("show");
         })
     })
+
+    //힌트
+    hints=document.querySelectorAll(".hint");
+    var hintcheck = false;
+    hints.forEach(function(hint){
+      hintcheck = false;
+      const liid=hint.parentElement.parentElement.id;
+      const li=document.querySelector(`#${liid}`);
+      const htds=li.querySelectorAll('.back .table td');
+      const index=parseInt(liid.substring(7));
+      const localarray = level1[index].board;
+      var hintnum, hintnumcopy = 3;
+
+      hintnum = hintnumcopy;
+
+      var hintarray = [];
+      var hintarraycopy = [];
+
+      // 힌트로 가능한 인덱스를 배열에 추가
+      for(i=0; i<htds.length; i++){
+        if(htds[i].classList.contains("no") || htds[i].classList.contains("black") || localarray[i]=="0") {
+          
+        }
+        else {
+          hintarray.push(i);
+          hintarraycopy.push(i);
+        }
+      }
+
+      hint.addEventListener('click', function(){
+        // previous를 눌렀을 때 초기값으로 세팅
+        if(hintcheck == false){
+          hintnum = hintnumcopy;
+          hintarray = [...hintarraycopy];
+          hintcheck = true;
+        }
+
+        if(hintnum>0){
+          var random = Math.floor(Math.random()*hintarray.length);
+          var randomhint = hintarray[random];
+          htds[randomhint].classList.add("black");
+          hintarray.splice(random,1);
+          hintnum--;
+          hint.innerHTML = `hint : ${hintnum}`;
+        } else {
+        }
+      })
+    });
 }
+
+
 
 
 

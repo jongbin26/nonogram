@@ -31,12 +31,6 @@ window.onload = function(){
           clock.innerHTML = "start";
           uptable.classList.remove("show");
           lefttable.classList.remove("show");
-          //reset
-          tds.forEach(function (td) {
-            td.classList.remove("black");
-            td.classList.remove("no");
-            td.innerHTML = "";
-          })
           submit.removeEventListener('click',clickSubmit);
         };  
       }

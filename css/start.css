@@ -100,7 +100,7 @@ body{
   table-layout:fixed;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align:center;
-  color: red;
+  color: #5a5a5a;
 }
 .start .start-box .back .table td{
   border: 1px solid black;
@@ -111,9 +111,13 @@ body{
 }
 .start .start-box .back .table td.black{
   background-color: #000;
+  box-sizing: border-box;
+  border: #fff solid 1px;
 }
 .start .start-box .back .table td:hover{
   background:#000;
+  box-sizing: border-box;
+  border: #fff solid 1px;
 }
 .start .start-box .back .table.createlevel1 td.no{
   border-collapse: collapse;
@@ -126,6 +130,23 @@ body{
 .start .start-box .back .table.createlevel3 td.no{
   border-collapse: collapse;
   height:10%;
+}
+.start .start-box .back .hint {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  left: 718px;
+  bottom: 190px;
+  font-size:20px;
+  color:white;
+  background-color: black;
+  text-align: center;
+  line-height: 50px;
+  cursor: url(cursor.cur), auto;
+}
+.start .start-box .back .hint:hover{
+  background-color: #5a5a5a;
+  transition: .3s;
 }
 
 /* 하단버튼 */
@@ -169,10 +190,12 @@ body{
   line-height: 50px;
   background-color: #5a5a5a;
 }
+
 .btns .reset:hover, .btns .clock:hover, .btns .submit:hover{
   transition: .3s;
   background-color: #969696;
 }
+
 
 
 /* 수빈코드 */

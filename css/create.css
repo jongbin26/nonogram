@@ -79,9 +79,13 @@ body{
 }
 .create .create-box .board table td.black{
   background-color: #000;
+  box-sizing: border-box;
+  border: #fff solid 1px;
 }
 .create .create-box .board table td:hover{
   background: #000;
+  box-sizing: border-box;
+  border: #fff solid 1px;
 }
 .create .create-box .plus{
   position: absolute;

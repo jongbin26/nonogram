@@ -41,6 +41,13 @@ for(i=0;i<localStorage.length;i++){
   litag.className="list";
   litag.id = `createli${i}`;
 
+  //힌트 버튼
+  const hint=document.createElement('div');
+  hint.className="hint";
+  if(obj.num == 10) hint.innerHTML="hint : 3";
+  else if(obj.num == 8) hint.innerHTML="hint : 2";
+  else hint.innerHTML = "hint : 1";
+
   //하단 버튼
   const btns=document.createElement('div');
   const clock_btn=document.createElement('div');
@@ -49,6 +56,7 @@ for(i=0;i<localStorage.length;i++){
   clock_btn.className="clock";
   reset_btn.className="reset";
   submit_btn.className="submit";
+  
   btns.append(reset_btn, clock_btn, submit_btn);
 
   btns.className="btns";
@@ -62,8 +70,8 @@ for(i=0;i<localStorage.length;i++){
   reset_btn.innerHTML="reset";
   clock_btn.innerHTML="start";
   submit_btn.innerHTML="submit";
-
-  backtag.append(previous, btns, upTable, leftTable);
+  
+  backtag.append(previous, btns, upTable, leftTable, hint);
   litag.append(fronttag, backtag);
 
   document.getElementsByClassName("gamelist")[0].append(litag);
@@ -73,6 +81,14 @@ const fronts=document.querySelectorAll('.front');
 fronts.forEach(function(front){
   front.addEventListener('click',function(){
     front.nextSibling.classList.add('on');
+    const size = front.nextSibling.firstChild.querySelectorAll('td').length;
+    var num;
+    if(size == 100) num = 3;
+    else if(size == 64) num = 2;
+    else num = 1;
+    hint = front.nextSibling.lastChild;
+    hint.innerHTML = `hint : ${num}`;
+
   })
 });
 
@@ -80,6 +96,13 @@ const previouses=document.querySelectorAll('.previous');
 previouses.forEach(function(previous){
   previous.addEventListener('click',function(){
     previous.parentElement.classList.remove('on');
+    //reset
+    tds.forEach(function (td) {
+      td.classList.remove("black");
+      td.classList.remove("no");
+      td.innerHTML = "";
+    })
+    hintcheck = false;
   })
 });
 
@@ -127,7 +150,7 @@ resets.forEach(function(reset){
       td.innerHTML = "";
     })
   })
-})
+});
 
 clocks=document.querySelectorAll(".clock");
 clocks.forEach(function(clock){
@@ -137,7 +160,63 @@ clocks.forEach(function(clock){
     temp1.classList.add("show");
     temp2.classList.add("show");
   })
-})
+});
+
+//힌트
+
+hints=document.querySelectorAll(".hint");
+var hintcheck = false;
+hints.forEach(function(hint){
+
+  const liid=hint.parentElement.parentElement.id;
+  const li=document.querySelector(`#${liid}`);
+  const htds=li.querySelectorAll('.back .table td');
+  const idNum=parseInt(liid.substring(8));
+  const localarray = localStorage.getItem(idNum);
+  const size = localarray.length;
+  var hintnum, hintnumcopy;
+
+  // 사이즈에 따른 힌트 개수
+  if(size==100) hintnumcopy = 3;
+  else if(size==64) hintnumcopy = 2;
+  else hintnumcopy = 1;
+  hintnum = hintnumcopy;
+
+  var hintarray = [];
+  var hintarraycopy = [];
+    
+  // 힌트로 가능한 인덱스를 배열에 추가
+  for(i=0; i<htds.length; i++){
+    if(htds[i].classList.contains("no") || htds[i].classList.contains("black") || localarray[i]=="0") {
+      
+    }
+    else {
+      hintarray.push(i);
+      hintarraycopy.push(i);
+    }
+  }
+
+  hint.addEventListener('click', function(){
+    // previous를 눌렀을 때 초기값으로 세팅
+    if(hintcheck == false){
+      hintnum = hintnumcopy;
+      hintarray = [...hintarraycopy];
+      hintcheck = true;
+    }
+
+    if(hintnum>0){
+      var random = Math.floor(Math.random()*hintarray.length);
+      var randomhint = hintarray[random];
+      htds[randomhint].classList.add("black");
+      hintarray.splice(random,1);
+      hintnum--;
+      hint.innerHTML = `hint : ${hintnum}`;
+    } else {
+    }
+
+
+  })
+});
 
 
 //숫자 대입
