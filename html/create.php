@@ -1,3 +1,41 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['connect'])) {
+    $_SESSION['connect'] = mysqli_connect("localhost", "root", "cscscs");
+    if($_SESSION['connect'] -> connect_errno) {
+      die("Cannot connect! " . $_SESSION['connect'] -> connect_error);
+    }
+
+    $db_nonogram = mysqli_select_db($_SESSION['connect'], 'nonogram');
+    if(!$db_nonogram) {
+      if(!mysqli_query($_SESSION['connect'], "CREATE DATABASE nonogram")) {
+          echo "<script>alert('Failed to Create Databases :: nonogram');</script>";
+        return;
+      }
+    }
+    $db_nonogram = mysqli_select_db($_SESSION['connect'], 'nonogram');
+
+    $check = mysqli_query($_SESSION['connect'], "SELECT score_name FROM lv1_1");
+    if($check == false) {
+      for ($i = 1; $i <= 3; $i++) {
+        for ($j = 1; $j <= 14; $j++) {
+          $lv = "lv" . $i . "_" . $j;
+          $create_table_query = "CREATE TABLE $lv (
+                        score_name varchar(20),
+                        score_time float(10),
+                        PRIMARY KEY (score_name)
+                        )";
+          $results = $_SESSION['connect']->query($create_table_query);
+          if($results == false) {
+            echo "Error: " . $create_table_query . "<br>" . $_SESSION['connect']->error;
+          }
+        }
+      }
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>

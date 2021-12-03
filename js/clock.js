@@ -49,7 +49,7 @@ window.onload = function () {
           }
           //제출 버튼
 
-          function clickSubmit() {
+          function clickSubmit(e) {
             var temp = 0;
             grandParentNode = submit.parentNode.parentNode;
             tds = grandParentNode.querySelectorAll(".table td");
@@ -71,9 +71,10 @@ window.onload = function () {
             }
 
             if ((checkAnswer(board, temp)[0] == grandParentNode.childNodes[3].innerHTML) && (checkAnswer(board, temp)[1] == grandParentNode.childNodes[4].innerHTML)) {
-              alert("정답입니다!");
+              var name=prompt("정답입니다!","이름을 적어주세요");
+              var record = e.target.previousSibling.innerHTML;
+              sessionStorage.setItem(name, record);
               clearInterval(timer);
-
             } else {
               alert("오답입니다ㅠㅠ");
             }
