@@ -38,7 +38,8 @@
 
 </body>
 </html>
-
 <?php
-print_r($_GET);
+$array = $_GET; // 정보 들어있는 array
+// array([name]=>'홍길동', [lv]=>lv1_2, [time]=>10.00)
+print_r($array);
 ?>
