@@ -10,6 +10,7 @@
   <script defer src="../js/tutoLevel2.js"></script>
   <script defer src="../js/tutoLevel3.js"></script>
   <script defer src="../js/tutoclock.js"></script>
+  <script defer src="../js/save.js"></script>
   <link rel="icon" href="../favicon.PNG"/>
   <title>NONOGRAM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +33,12 @@
       <ul class="gamelist"></ul>
     </div>
   </div>
-  
+  <!-- ajax -->
+  <input type="button" value="ajax 테스트" id="ajax_btn">
+
 </body>
 </html>
+
+<?php
+print_r($_GET);
+?>
