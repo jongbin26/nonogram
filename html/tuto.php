@@ -1,73 +1,73 @@
 <?php
-  session_start();
+  // session_start();
 
-  if(!isset($_SESSION['connect'])) {
-    $_SESSION['connect'] = mysqli_connect("localhost", "root", "cscscs");
-    if($_SESSION['connect'] -> connect_errno) {
-      die("Cannot connect! " . $_SESSION['connect'] -> connect_error);
-    }
+  // if(!isset($_SESSION['connect'])) {
+  //   $_SESSION['connect'] = mysqli_connect("localhost", "root", "cscscs");
+  //   if($_SESSION['connect'] -> connect_errno) {
+  //     die("Cannot connect! " . $_SESSION['connect'] -> connect_error);
+  //   }
 
-    $db_nonogram = mysqli_select_db($_SESSION['connect'], 'nonogram');
-    if(!$db_nonogram) {
-      if(!mysqli_query($_SESSION['connect'], "CREATE DATABASE nonogram")) {
-          echo "<script>alert('Failed to Create Databases :: nonogram');</script>";
-        return;
-      }
-    }
-    $db_nonogram = mysqli_select_db($_SESSION['connect'], 'nonogram');
+  //   $db_nonogram = mysqli_select_db($_SESSION['connect'], 'nonogram');
+  //   if(!$db_nonogram) {
+  //     if(!mysqli_query($_SESSION['connect'], "CREATE DATABASE nonogram")) {
+  //         echo "<script>alert('Failed to Create Databases :: nonogram');</script>";
+  //       return;
+  //     }
+  //   }
+  //   $db_nonogram = mysqli_select_db($_SESSION['connect'], 'nonogram');
 
-    $check = mysqli_query($_SESSION['connect'], "SELECT score_name FROM lv1_1");
-    if($check == false) {
-      for ($i = 1; $i <= 3; $i++) {
-        for ($j = 1; $j <= 14; $j++) {
-          $lv = "lv" . $i . "_" . $j;
-          $create_table_query = "CREATE TABLE $lv (
-                        score_name varchar(20),
-                        score_time float(10),
-                        PRIMARY KEY (score_name)
-                        )";
-          $results = $_SESSION['connect']->query($create_table_query);
-          if($results == false) {
-            echo "Error: " . $create_table_query . "<br>" . $_SESSION['connect']->error;
-          }
-        }
-      }
-    }
-  }
+  //   $check = mysqli_query($_SESSION['connect'], "SELECT score_name FROM lv1_1");
+  //   if($check == false) {
+  //     for ($i = 1; $i <= 3; $i++) {
+  //       for ($j = 1; $j <= 14; $j++) {
+  //         $lv = "lv" . $i . "_" . $j;
+  //         $create_table_query = "CREATE TABLE $lv (
+  //                       score_name varchar(20),
+  //                       score_time float(10),
+  //                       PRIMARY KEY (score_name)
+  //                       )";
+  //         $results = $_SESSION['connect']->query($create_table_query);
+  //         if($results == false) {
+  //           echo "Error: " . $create_table_query . "<br>" . $_SESSION['connect']->error;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
-  function get_and_show_Score($lv, $name) {
-    $connect = mysqli_connect("localhost", "root", "cscscs");
+  // function get_and_show_Score($lv, $name) {
+  //   $connect = mysqli_connect("localhost", "root", "cscscs");
 
-    $scoreList = array();
-    $newScore = array();
+  //   $scoreList = array();
+  //   $newScore = array();
 
-    while($row = mysqli_fetch_row(mysqli_query($connect, "SELECT score_time FROM $lv"))) {
-      array_push($scoreList, $row);
-    }
+  //   while($row = mysqli_fetch_row(mysqli_query($connect, "SELECT score_time FROM $lv"))) {
+  //     array_push($scoreList, $row);
+  //   }
 
-    $url =  http_build_url();
-    $html = file_get_contents($url);
-    $dom = new DOMDocument("1.0", "UTF-8");
-    @$dom->loadHTML($html);
-    $finder = new DomXPath($dom);
+  //   $url =  http_build_url();
+  //   $html = file_get_contents($url);
+  //   $dom = new DOMDocument("1.0", "UTF-8");
+  //   @$dom->loadHTML($html);
+  //   $finder = new DomXPath($dom);
 
-    $classname_clock="clock";
-    $clock = $finder->query("//*[contains(@class, '$classname_clock')]");
-    $clock_arr = iterator_to_array($clock);
+  //   $classname_clock="clock";
+  //   $clock = $finder->query("//*[contains(@class, '$classname_clock')]");
+  //   $clock_arr = iterator_to_array($clock);
 
-    foreach($clock_arr as $eachItem) {
-      array_push($newScore, $eachItem->nodeValue);
-    }
+  //   foreach($clock_arr as $eachItem) {
+  //     array_push($newScore, $eachItem->nodeValue);
+  //   }
 
-    array_push($scoreList, $newScore[0]);
-    sort($scoreList);
+  //   array_push($scoreList, $newScore[0]);
+  //   sort($scoreList);
 
-    mysqli_query($connect, "INSERT INTO $lv VALUES ($name, $newScore[0])");
-    mysqli_query($connect, "DELETE FROM $lv WHERE score_time = $scoreList[3]");
+  //   mysqli_query($connect, "INSERT INTO $lv VALUES ($name, $newScore[0])");
+  //   mysqli_query($connect, "DELETE FROM $lv WHERE score_time = $scoreList[3]");
   
-    $score_result = mysqli_query($connect, "SELECT * FROM $lv ORDER BY score_time ASC");
-    echo "<script>alert($score_result);</script>";
-  }
+  //   $score_result = mysqli_query($connect, "SELECT * FROM $lv ORDER BY score_time ASC");
+  //   echo "<script>alert($score_result);</script>";
+  // }
 ?>
 
 <!DOCTYPE html>

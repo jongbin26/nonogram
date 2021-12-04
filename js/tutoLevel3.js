@@ -35,7 +35,7 @@ function flevel3(){
         upTable.innerHTML=firstTable;
         leftTable.innerHTML=secondTable;
         litag.className="list";
-        litag.id= `tuto3li${i}`;
+        litag.id= `lv3_${i+1}`;
 
         //힌트 버튼
         const hint=document.createElement('div');
@@ -156,8 +156,8 @@ function flevel3(){
       const liid=hint.parentElement.parentElement.id;
       const li=document.querySelector(`#${liid}`);
       const htds=li.querySelectorAll('.back .table td');
-      const index=parseInt(liid.substring(7));
-      const localarray = level1[index].board;
+      const index=parseInt(liid.substring(4));
+      const localarray = level1[index-1].board;
       var hintnum, hintnumcopy = 3;
 
       hintnum = hintnumcopy;

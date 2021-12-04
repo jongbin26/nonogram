@@ -73,7 +73,13 @@ window.onload = function () {
             if ((checkAnswer(board, temp)[0] == grandParentNode.childNodes[3].innerHTML) && (checkAnswer(board, temp)[1] == grandParentNode.childNodes[4].innerHTML)) {
               var name=prompt("정답입니다!","이름을 적어주세요");
               var record = e.target.previousSibling.innerHTML;
-              sessionStorage.setItem(name, record);
+              var id = e.target.parentNode.parentNode.parentNode.id;
+              var obj={
+                username:name,
+                time:record
+              }
+              objstr=JSON.stringify(obj);
+              sessionStorage.setItem(id, objstr);
               clearInterval(timer);
             } else {
               alert("오답입니다ㅠㅠ");

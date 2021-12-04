@@ -1,0 +1,18 @@
+body=document.querySelector('body');
+var lv = sessionStorage.key(0);
+var username = JSON.parse(sessionStorage.getItem(sessionStorage.key(0))).username;
+var time = JSON.parse(sessionStorage.getItem(sessionStorage.key(0))).time;
+var sql=document.createElement('div');
+var sql_name = document.createElement('div');
+var sql_time = document.createElement('div');
+var sql_level = document.createElement('div');
+sql_name.innerHTML=username;
+sql_time.innerHTML=time;
+sql_level.innerHTML=lv;
+sql.className="sql";
+sql_name.className="name";
+sql_time.className="time";
+sql_level.className="level";
+sql.append(sql_level,sql_name,sql_time);
+body.append(sql);
+sessionStorage.removeItem(sessionStorage.key(0));

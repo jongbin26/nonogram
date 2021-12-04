@@ -39,7 +39,7 @@ function flevel1(){
         upTable.innerHTML=firstTable;
         leftTable.innerHTML=secondTable;
         litag.className="list";
-        litag.id= `tuto1li${i}`;
+        litag.id= `lv1_${i+1}`;
 
         //힌트 버튼
         const hint=document.createElement('div');
@@ -161,8 +161,8 @@ function flevel1(){
       const liid=hint.parentElement.parentElement.id;
       const li=document.querySelector(`#${liid}`);
       const htds=li.querySelectorAll('.back .table td');
-      const index=parseInt(liid.substring(7));
-      const localarray = level1[index].board;
+      const index=parseInt(liid.substring(4));
+      const localarray = level1[index-1].board;
       var hintnum, hintnumcopy = 1;
 
       hintnum = hintnumcopy;
@@ -207,7 +207,6 @@ function flevel1(){
   const lev1=document.querySelector(".level1");
   lev1.classList.add("focus");
   lev1.addEventListener('click',function(){
-    console.log("level1 클릭");
     lev1.classList.add("focus");
     if(lev1.parentNode.children[1].classList.contains("focus"))
       lev1.parentNode.children[1].classList.remove("focus");
