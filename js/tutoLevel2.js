@@ -42,6 +42,7 @@ function flevel2(){
         hint.className="hint";
         hint.innerHTML = "hint : 2";
 
+        
         //갱신 버튼
         const record = document.createElement('div');
         record.innerHTML = "record";
