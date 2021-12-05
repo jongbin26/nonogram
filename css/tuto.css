@@ -164,6 +164,24 @@ body{
   transition: .3s;
 }
 
+.start .start-box .back .record {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  left: 718px;
+  bottom: 260px;
+  font-size:20px;
+  color:white;
+  background-color: black;
+  text-align: center;
+  line-height: 50px;
+  cursor: url(cursor.cur), auto;
+}
+.start .start-box .back .record:hover{
+  background-color: #5a5a5a;
+  transition: .3s;
+}
+
 /* 하단버튼 */
 .btns{
   position: absolute;

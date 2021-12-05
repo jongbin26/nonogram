@@ -33,8 +33,6 @@
       <ul class="gamelist"></ul>
     </div>
   </div>
-  <!-- ajax -->
-  <input type="button" value="ajax 테스트" id="ajax_btn">
 
 </body>
 </html>
