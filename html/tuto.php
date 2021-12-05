@@ -38,8 +38,41 @@
 
 </body>
 </html>
+
 <?php
-$array = $_GET; // 정보 들어있는 array
-// array([name]=>'홍길동', [lv]=>lv1_2, [time]=>10.00)
-print_r($array);
+  session_start();
+
+  $newScore = $_GET; // 정보 들어있는 array
+  // newScore([name]=>'홍길동', [lv]=>lv1_2, [time]=>10.00)
+
+  if(sizeof($newScore) != 3) {
+    exit();
+  }
+
+  $name = "name";
+  $lv = "lv";
+  $time = "time";
+
+  $_SESSION['connect'] = mysqli_connect("localhost", "root", "cscscs");
+  $_SESSION['db_nonogram'] = mysqli_select_db($_SESSION['connect'], 'nonogram');
+
+  $timeList = array();
+  $score_result = mysqli_query($_SESSION['connect'], "SELECT score_time FROM $newScore[lv]");
+
+  $create_table_query = "INSERT INTO $newScore[$lv] VALUES ('" . $newScore[$name] . "', $newScore[$time])";
+  $results = $_SESSION['connect']->query($create_table_query);
+  if($results == false) {
+    echo "Error: " . $create_table_query . "<br>" . $_SESSION['connect']->error;
+  }
+
+  $toGetRow=mysqli_query($_SESSION['connect'], "SELECT * FROM $newScore[lv]");
+  if (mysqli_num_rows($toGetRow) > 3) {
+    $create_table_query = "DELETE FROM $newScore[$lv] WHERE score_time=(SELECT max(score_time) FROM $newScore[lv]);";
+    $results = $_SESSION['connect']->query($create_table_query);
+    if($results == false) {
+      echo "Error: " . $create_table_query . "<br>" . $_SESSION['connect']->error;
+    }
+  }
+
+  // 데이터베이스 출력 SELECT * FROM $newScore[$lv] ORDER BY score_time ASC
 ?>
