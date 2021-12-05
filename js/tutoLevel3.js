@@ -41,6 +41,11 @@ function flevel3(){
         const hint=document.createElement('div');
         hint.className="hint";
         hint.innerHTML = "hint : 3";
+
+        //갱신 버튼
+        const record = document.createElement('div');
+        record.innerHTML = "record";
+        record.className="record";
     
         //하단 버튼
         const btns=document.createElement('div');
@@ -64,7 +69,7 @@ function flevel3(){
         clock_btn.innerHTML="start";
         submit_btn.innerHTML="submit";
     
-        backtag.append(previous, btns, upTable, leftTable, hint);
+        backtag.append(previous, btns, upTable, leftTable, hint, record);
         litag.append(fronttag, backtag);
     
         document.getElementsByClassName("gamelist")[0].append(litag);
@@ -74,7 +79,7 @@ function flevel3(){
     fronts.forEach(function (front) {
         front.addEventListener('click', function () {
             front.nextSibling.classList.add('on');
-            hint = front.nextSibling.lastChild;
+            hint = front.nextSibling.children[5];
             hint.innerHTML = `hint : 3`;
         })
     });
