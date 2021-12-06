@@ -22,7 +22,7 @@
   <div class="return">
     <a href="/nonogram.php"><</a>
   </div>
-
+  
   <div class="start">
     <div class="start-box">
       <div class="level">
@@ -30,16 +30,15 @@
         <p class="level2">level2</p>
         <p class="level3">level3</p>
       </div>
+      
       <ul class="gamelist"></ul>
     </div>
   </div>
-
+  
 </body>
 </html>
 
 <?php
-  session_start();
-
   $newScore = $_GET; // 정보 들어있는 array
   // newScore([name]=>'홍길동', [lv]=>lv1_2, [time]=>10.00)
 
@@ -71,6 +70,4 @@
       echo "Error: " . $create_table_query . "<br>" . $_SESSION['connect']->error;
     }
   }
-
-  // 데이터베이스 출력 SELECT * FROM $newScore[$lv] ORDER BY score_time ASC
 ?>

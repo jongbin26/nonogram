@@ -47,6 +47,11 @@ function flevel3(){
         record.innerHTML = "record";
         record.className="record";
     
+        //랭킹 테이블
+        const ranking = document.createElement('table');
+        ranking.innerHTML = "RANKING";
+        ranking.className = "ranking";
+
         //하단 버튼
         const btns=document.createElement('div');
         const clock_btn=document.createElement('div');
@@ -69,7 +74,7 @@ function flevel3(){
         clock_btn.innerHTML="start";
         submit_btn.innerHTML="submit";
     
-        backtag.append(previous, btns, upTable, leftTable, hint, record);
+        backtag.append(previous, btns, upTable, leftTable, hint, record, ranking);
         litag.append(fronttag, backtag);
     
         document.getElementsByClassName("gamelist")[0].append(litag);
@@ -162,7 +167,7 @@ function flevel3(){
       const li=document.querySelector(`#${liid}`);
       const htds=li.querySelectorAll('.back .table td');
       const index=parseInt(liid.substring(4));
-      const localarray = level1[index-1].board;
+      const localarray = level3[index-1].board;
       var hintnum, hintnumcopy = 3;
 
       hintnum = hintnumcopy;
@@ -170,7 +175,10 @@ function flevel3(){
       var hintarray = [];
       var hintarraycopy = [];
 
-      // 힌트로 가능한 인덱스를 배열에 추가
+      
+
+      hint.addEventListener('click', function(){
+        // 힌트로 가능한 인덱스를 배열에 추가
       for(i=0; i<htds.length; i++){
         if(htds[i].classList.contains("no") || htds[i].classList.contains("black") || localarray[i]=="0") {
           
@@ -180,8 +188,6 @@ function flevel3(){
           hintarraycopy.push(i);
         }
       }
-
-      hint.addEventListener('click', function(){
         // previous를 눌렀을 때 초기값으로 세팅
         if(hintcheck == false){
           hintnum = hintnumcopy;
